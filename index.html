@@ -88,53 +88,126 @@ $(function () {
             name: "Aim Shot",
             code: 'aim-shot',
             description: "Attack a single target for extra damage.",
-            mana: 4,
-            rank: 1
+            mana: 4
         }, {
             name: "Arrow of Thunder",
             code: 'arrow-of-thunder',
             description: "Attack a single enemy and weaken their magical attack power.",
-            mana: -1, // unknown
-            rank: 8
+            mana: -1 // unknown
+        }, {
+            name: "Barbed Arrows",
+            code: 'barbed-arrows',
+            description: "Cause a single enemy to take damage over time.",
+            mana: -1 // unknown
         }, {
             name: "Deadly Poison",
             code: 'deadly-poison',
             description: "Make an enemy take extra damage over time.",
-            mana: 8,
-            rank: 4
+            mana: 8
+        }, {
+            name: "Hunter's Eye",
+            code: 'hunter-s-eye',
+            description: "Diminish all enemies physical attack attribute.",
+            mana: 0 // passive
+        }, {
+            name: "Hunter's Mark",
+            code: 'hunter-s-mark',
+            description: "Diminish all enemies physical attack by a large amount. (10%-30%) Rank 1-3.",
+            mana: 0 // passive
+        }, {
+            name: "Poison Arrow",
+            code: 'poison-arrow',
+            description: "Cause a single enemy to take damage over time.",
+            mana: 0 // passive
         }, {
             name: "Predator's Mark",
             code: 'predator-s-mark',
             description: "Diminish all enemies magical attack attribute by a large amount.",
-            mana: 0, // passive
-            rank: 4
+            mana: 0 // passive
         }, {
-            name: "Varra's Arrow",
-            code: 'varra-s-arrow',
-            description: "Attack a single enemy and make them lose health over time.",
-            mana: -1, // unkown
-            rank: 4
+            name: "Rain of Arrows",
+            code: 'rain-of-arrows',
+            description: "Attack all enemies for extra damage.",
+            mana: -1 // unknown
+        }, {
+            name: "Righteous Volley",
+            code: 'righteous-volley',
+            description: "Attack all enemies for extra damage.",
+            mana: -1 // unknown
+        }, {
+            name: "Stalker's Eye",
+            code: 'stalker-s-eye',
+            description: "Diminish all enemies' magical defense attribute..",
+            mana: -1 // unkown
         }, {
             name: "Stalker's Mark",
             code: 'stalker-s-mark',
             description: "Diminish all enemies magical attack attribute by a large amount.",
-            mana: -1, // unkown
-            rank: 4
+            mana: -1 // unkown
         }, {
             name: "Steal",
             code: 'steal',
             description: "Attack a target and steal an item.",
-            mana: 3,
-            rank: 1
+            mana: 3
         }, {
             name: "Swindler's ruse",
             code: 'swindler-s-ruse',
             description: "Diminish all enemies luck attribute by a large amount.",
-            mana: 0, // passive
-            rank: 8
+            mana: 0 // passive
+        }, {
+            name: "Varra's Arrow",
+            code: 'varra-s-arrow',
+            description: "Attack a single enemy and make them lose health over time.",
+            mana: -1 // unkown
         } ],
 
         heroes: [ {
+            name: "Alshin Dead-Eye",
+            code: 'alshin-dead-eye',
+            wiki: 'Alshin_Dead-Eye',
+            element: 'spirit',
+            tier: 'rare',
+            class: 'archer',
+            abilities: ['aim-shot', 'barbed-arrows', 'righteous-volley'],
+            evolutions: [ {
+                name: "Alshin Dead-Eye",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     230, magic:     219, defense:     176, resistance:     195, health:     254, luck:     189},
+                ]
+            }, {
+                name: "Alshin Dead-Eye+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     267, magic:     255, defense:     210, resistance:     230, health:     292, luck:     223},
+                ]
+            } ]
+
+        },  {
+
+            name: "Duskweald Slayer",
+            code: 'duskweald-slayer',
+            wiki: 'Duskweald_Slayer',
+            element: 'primal',
+            tier: 'epic',
+            class: 'archer',
+            abilities: ['aim-shot', 'poison-arrow', 'predator-s-mark'],
+            evolutions: [ {
+                name: "Duskweald Slayer",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     292, magic:     263, defense:     246, resistance:     253, health:     246, luck:     257},
+                ]
+            }, {
+                name: "Duskweald Slayer+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     361, magic:     327, defense:     307, resistance:     316, health:     307, luck:     320},
+                ]
+            } ]
+
+        },  {
+
             name: "Freydis",
             code: 'freydis',
             wiki: 'Freydis',
@@ -157,6 +230,7 @@ $(function () {
             } ]
 
         },  {
+
             name: "Kharaz Ravager",
             code: 'kharaz-ravager',
             wiki: 'Kharaz_Ravager',
@@ -169,6 +243,80 @@ $(function () {
                 stars: 3,
                 stats: [
                     {level:  1,       strength:     297, magic:     286, defense:     233, resistance:     253, health:     233, luck:     262},
+                ]
+            } ]
+
+        },  {
+
+            name: "Kharaz Sniper",
+            code: 'kharaz-sniper',
+            wiki: 'Kharaz_Sniper',
+            element: 'terra',
+            tier: 'rare',
+            class: 'archer',
+            abilities: ['aim-shot', 'varra-s-arrow', 'stalker-s-eye'],
+            evolutions: [ {
+                name: "Kharaz Sniper",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     223, magic:     213, defense:     165, resistance:     183, health:     165, luck:     191},
+                ]
+            } ]
+
+        },  {
+
+            name: "Ranger of the Deepwood",
+            code: 'ranger-of-the-deepwood',
+            wiki: 'Ranger_of_the_Deepwood',
+            element: 'primal',
+            tier: 'epic',
+            class: 'archer',
+            abilities: ['aim-shot', 'poison-arrow', 'hunter-s-mark'],
+            evolutions: [ {
+                name: "Ranger of the Deepwood",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     303, magic:     274, defense:     233, resistance:     263, health:     242, luck:     248},
+                ]
+            }, {
+                name: "Ranger of the Deepwood+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     423, magic:     377, defense:     314, resistance:     362, health:     323, luck:     334},
+                ]
+            } ]
+        },  {
+
+            name: "Rimeholm Kingwatcher",
+            code: 'rimeholm-kingwatcher',
+            wiki: 'Rimeholm_Kingwatcher',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'archer',
+            abilities: ['aim-shot', 'barbed-arrows', 'predator-s-mark'],
+            evolutions: [ {
+                name: "Rimeholm Kingwatcher",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     235, magic:     182, defense:     180, resistance:     155, health:     202, luck:     174},
+                ]
+            }, {
+                name: "Rimeholm Kingwatcher++",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     295, magic:     234, defense:     232, resistance:     203, health:     257, luck:     225},
+                ]
+            }, {
+                name: "Rimeholm Kingwatcher++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     337, magic:     272, defense:     270, resistance:     239, health:     296, luck:     262},
+                ]
+            }, {
+                name: "Rimeholm Kingwatcher+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     380, magic:     312, defense:     310, resistance:     277, health:     337, luck:     301},
                 ]
             } ]
 
@@ -211,6 +359,86 @@ $(function () {
                     {level: 25,       strength:    1633, magic:     928, defense:    1392, resistance:     855, health:    1347, luck:    1610},
                     {level: 30,       strength:    2017, magic:    1102, defense:    1704, resistance:    1009, health:    1644, luck:    1990},
                     {level: 35,       strength:    2534, magic:    1337, defense:    2125, resistance:    1216, health:    2043, luck:    2500},
+                ]
+            } ],
+
+        },  {
+
+            name: "Runewood Ranger",
+            code: 'runewood-ranger',
+            wiki: 'Runewood_Ranger',
+            element: 'primal',
+            tier: 'rare',
+            class: 'archer',
+            abilities: ['aim-shot', 'poison-arrow', 'hunter-s-eye'],
+            evolutions: [ {
+                name: "Runewood Ranger",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     229, magic:     202, defense:     165, resistance:     192, health:     173, luck:     178},
+                ]
+            }, {
+                name: "Runewood Ranger+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     265, magic:     237, defense:     198, resistance:     227, health:     207, luck:     212},
+                ]
+            } ],
+
+        },  {
+
+            name: "Tempest Marksman",
+            code: 'tempest-marksman',
+            wiki: 'Tempest_Marksman',
+            element: 'spirit',
+            tier: 'rare',
+            class: 'archer',
+            abilities: ['aim-shot', 'rain-of-arrows', 'stalker-s-eye'],
+            evolutions: [ {
+                name: "Tempest Marksman",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     223, magic:     202, defense:     176, resistance:     183, health:     161, luck:     191},
+                ]
+            } ],
+
+        },  {
+
+            name: "Tundra Goblin Dead-Eye",
+            code: 'tundra-goblin-dead-eye',
+            wiki: 'Tundra_Goblin_Dead-Eye',
+            element: 'lunar',
+            tier: 'epic',
+            class: 'archer',
+            abilities: ['aim-shot', 'predator-s-mark', 'arrow-of-thunder'],
+            evolutions: [ {
+                name: "Tundra Goblin Dead-Eye",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     279, magic:     292, defense:     242, resistance:     269, health:     237, luck:     243},
+                ]
+            }, {
+                name: "Tundra Goblin Dead-Eye+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     318, magic:     332, defense:     279, resistance:     307, health:     274, luck:     280},
+                ]
+            } ],
+
+        },  {
+
+            name: "Tundra Goblin Shooter",
+            code: 'tundra-goblin-shooter',
+            wiki: 'Tundra_Goblin_Shooter',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'archer',
+            abilities: ['aim-shot', 'predator-s-mark', 'arrow-of-thunder'],
+            evolutions: [ {
+                name: "Tundra Goblin Shootere+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     242, magic:     254, defense:     207, resistance:     232, health:     202, luck:     208},
                 ]
             } ],
         } ],
@@ -524,8 +752,8 @@ $(function () {
         $templates.each(function(idx, template) {
             var $template = $(template);
             var hero = getDataByCode('heroes', $template.find('.heroes').val());
-            var stars = $template.find('.stars').val() ? $template.find('.stars').val() : 1;
-            var level = $template.find('.levels').val() ? $template.find('.levels').val() : 1;
+            var stars = $template.find('.stars').val() ? $template.find('.stars').val() : null;
+            var level = $template.find('.levels').val() ? $template.find('.levels').val() : null;
             var stat, evolution;
 
             if (hero && (evolution = getHeroEvolution(hero, stars)) && (stat = getHeroStat(hero, stars, level))) {
