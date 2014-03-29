@@ -504,7 +504,7 @@ $(function () {
                     pointPlacement: 'on'
                 } );
 
-                if (!$.inArray(evolution.name, evolutionNames)) {
+                if ($.inArray(evolution.name, evolutionNames) == -1) {
                     evolutionNames.push(evolution.name);
                 }
             }
