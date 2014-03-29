@@ -88,32 +88,50 @@ $(function () {
             name: "Aim Shot",
             code: 'aim-shot',
             description: "Attack a single target for extra damage.",
-            mana: 4
+            mana: 4,
+            rank: 1
         }, {
             name: "Arrow of Thunder",
             code: 'arrow-of-thunder',
             description: "Attack a single enemy and weaken their magical attack power.",
-            mana: -1 // unknown
+            mana: -1, // unknown
+            rank: 8
         }, {
             name: "Deadly Poison",
             code: 'deadly-poison',
             description: "Make an enemy take extra damage over time.",
-            mana: 8
+            mana: 8,
+            rank: 4
         }, {
             name: "Predator's Mark",
             code: 'predator-s-mark',
             description: "Diminish all enemies magical attack attribute by a large amount.",
-            mana: 0 // passive
+            mana: 0, // passive
+            rank: 4
+        }, {
+            name: "Varra's Arrow",
+            code: 'varra-s-arrow',
+            description: "Attack a single enemy and make them lose health over time.",
+            mana: -1, // unkown
+            rank: 4
+        }, {
+            name: "Stalker's Mark",
+            code: 'stalker-s-mark',
+            description: "Diminish all enemies magical attack attribute by a large amount.",
+            mana: -1, // unkown
+            rank: 4
         }, {
             name: "Steal",
             code: 'steal',
             description: "Attack a target and steal an item.",
-            mana: 3
+            mana: 3,
+            rank: 1
         }, {
             name: "Swindler's ruse",
             code: 'swindler-s-ruse',
             description: "Diminish all enemies luck attribute by a large amount.",
-            mana: 0 // passive
+            mana: 0, // passive
+            rank: 8
         } ],
 
         heroes: [ {
@@ -135,6 +153,22 @@ $(function () {
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     624, magic:     557, defense:     521, resistance:     517, health:     547, luck:     522},
+                ]
+            } ]
+
+        },  {
+            name: "Kharaz Ravager",
+            code: 'kharaz-ravager',
+            wiki: 'Kharaz_Ravager',
+            element: 'terra',
+            tier: 'epic',
+            class: 'archer',
+            abilities: ['aim-shot', 'varra-s-arrow', 'stalker-s-mark'],
+            evolutions: [ {
+                name: "Kharaz Ravager++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     297, magic:     286, defense:     233, resistance:     253, health:     233, luck:     262},
                 ]
             } ]
 
@@ -358,16 +392,13 @@ $(function () {
     function updateStars(event)
     {
         var $template = findElementTemplate($(event.target));
-        var stars = 0;
         var options = '<option value="">Evolutions</option>';
         var hero = getDataByCode('heroes', $template.find('.heroes').val());
 
         if (hero) {
-            stars = hero.evolutions.length;
-        }
-
-        for (var star = 1; star <= stars; star++) {
-            options += '<option value="' + star + '">' + Array(star + 1).join('*') + '</option>';
+            $.each(hero.evolutions, function(idx, evolution) {
+                options += '<option value="' + evolution.stars + '">' + Array(evolution.stars + 1).join('*') + '</option>';
+            } );
         }
 
         $template.find('.stars').empty().append(options)
@@ -398,7 +429,7 @@ $(function () {
         var heroEvolution;
 
         $.each(hero.evolutions, function(idx, evolution) {
-            if (evolution.stars == stars) {
+            if (stars == null || evolution.stars == stars) {
                 heroEvolution = evolution;
                 return false;
             }
@@ -414,7 +445,7 @@ $(function () {
 
         if (heroEvolution) {
             $.each(heroEvolution.stats, function(idx, stat) {
-                if (stat.level == level) {
+                if (level == null || stat.level == level) {
                     getHeroStat = stat;
                 }
             } );
@@ -458,7 +489,7 @@ $(function () {
     {
         var $template = findFirstTemplate();
         var hero = getDataByCode('heroes', $template.find('.heroes').val());
-        var stars = $template.find('.stars').val() ? $template.find('.stars').val() : 1;
+        var stars = $template.find('.stars').val() ? $template.find('.stars').val() : null;
         var level = $template.find('.levels').val();
         var evolution = getHeroEvolution(hero, stars);
         var highcharts = data.highcharts;
