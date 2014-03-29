@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Honorbound Heroes Stats</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+
+    <div class="templates" data-nth="0" style="display:none; width:600px; margin-left: auto; margin-right: auto;">
+        <select class="elements"></select>
+        <select class="tiers"></select>
+        <select class="classes"></select>
+        <select class="heroes"></select>
+        <select class="stars"></select>
+        <select class="levels"></select>
+        <br />
+        <div style="text-align: center"><label>V.S</label><input type="checkbox" class="vss" /></div>
+    </div>
+
+    <div id="filters">
+
+    </div>
+
+    <div id="graph" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+    <script type="text/javascript">
+$(function () {
+
+    var data = {
+        elements : [ {
+            name: "Abyss",
+            code: 'abyss'
+        }, {
+            name: "Lunar",
+            code: 'lunar'
+        }, {
+            name: "Primal",
+            code: 'primal'
+        }, {
+            name: "Spirit",
+            code: 'spirit'
+        }, {
+            name: "Terra",
+            code: 'terra'
+        } ],
+
+        tiers: [ {
+            name: "Common",
+            code: 'common'
+        }, {
+            name: "Uncommon",
+            code: 'uncommon'
+        }, {
+            name: "Rare",
+            code: 'rare'
+        }, {
+            name: "Epic",
+            code: 'epic'
+        }, {
+            name: "Legendary",
+            code: 'legendary'
+        } ],
+
+        classes: [ {
+            name: "Archer",
+            code: 'archer'
+        }, {
+            name: "Cleric",
+            code: 'cleric'
+        }, {
+            name: "Knight",
+            code: 'knight'
+        }, {
+            name: "Rogue",
+            code: 'rogue'
+        }, {
+            name: "Warrior",
+            code: 'warrior'
+        }, {
+            name: "Wizard",
+            code: 'wizard'
+        } ],
+
+        abilities: [ {
+            name: "Aim Shot",
+            code: 'aim-shot',
+            description: "Attack a single target for extra damage.",
+            mana: 4
+        }, {
+            name: "Arrow of Thunder",
+            code: 'arrow-of-thunder',
+            description: "Attack a single enemy and weaken their magical attack power.",
+            mana: -1 // unknown
+        }, {
+            name: "Deadly Poison",
+            code: 'deadly-poison',
+            description: "Make an enemy take extra damage over time.",
+            mana: 8
+        }, {
+            name: "Predator's Mark",
+            code: 'predator-s-mark',
+            description: "Diminish all enemies magical attack attribute by a large amount.",
+            mana: 0 // passive
+        }, {
+            name: "Steal",
+            code: 'steal',
+            description: "Attack a target and steal an item.",
+            mana: 3
+        }, {
+            name: "Swindler's ruse",
+            code: 'swindler-s-ruse',
+            description: "Diminish all enemies luck attribute by a large amount.",
+            mana: 0 // passive
+        } ],
+
+        heroes: [ {
+            name: "Freydis",
+            code: 'freydis',
+            wiki: 'Freydis',
+            element: 'lunar',
+            tier: 'legendary',
+            class: 'archer',
+            abilities: ['aim-shot', 'predator-s-mark', 'arrow-of-thunder'],
+            evolutions: [ {
+                name: "Freydis",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     450, magic:     412, defense:     392, resistance:     390, health:     406, luck:     395},
+                ]
+            }, {
+                name: "Freydis+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     624, magic:     557, defense:     521, resistance:     517, health:     547, luck:     522},
+                ]
+            } ]
+
+        },  {
+
+            name: "Rimeholm Scout",
+            code: 'rimeholm-scout',
+            wiki: 'Rimeholm_Scout',
+            element: 'lunar',
+            tier: 'epic',
+            class: 'rogue',
+            abilities: ['steal', 'deadly-poison', 'swindler-s-ruse'],
+            evolutions: [ {
+                name: "Rimeholm Scout",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     323, magic:     271, defense:     306, resistance:     263, health:     308, luck:     316},
+                ]
+            }, {
+                name: "Rimeholm Scout+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     364, magic:     310, defense:     346, resistance:     301, health:     348, luck:     357},
+                ]
+            }, {
+                name: "Rimeholm Scout++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     442, magic:     381, defense:     422, resistance:     370, health:     424, luck:     435},
+                ]
+            }, {
+                name: "Rimeholm Scout+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     452, magic:     394, defense:     432, resistance:     383, health:     435, luck:     445},
+                    {level:  5,       strength:     553, magic:     440, defense:     514, resistance:     423, health:     513, luck:     545},
+                    {level: 10,       strength:     748, magic:     527, defense:     672, resistance:     501, health:     663, luck:     737},
+                    {level: 15,       strength:     988, magic:     636, defense:     868, resistance:     597, health:     849, luck:     974},
+                    {level: 20,       strength:    1275, magic:     766, defense:    1101, resistance:     712, health:    1070, luck:    1258},
+                    {level: 25,       strength:    1633, magic:     928, defense:    1392, resistance:     855, health:    1347, luck:    1610},
+                    {level: 30,       strength:    2017, magic:    1102, defense:    1704, resistance:    1009, health:    1644, luck:    1990},
+                    {level: 35,       strength:    2534, magic:    1337, defense:    2125, resistance:    1216, health:    2043, luck:    2500},
+                ]
+            } ],
+        } ],
+
+        highcharts: {
+
+            chart: {
+                polar: true,
+                type: 'line'
+            },
+
+            title: {
+                text: '',
+                x: -80
+            },
+
+            pane: {
+                size: '80%'
+            },
+
+            xAxis: {
+                categories: ['Strength', 'Magic', 'Defense', 'Resistance', 'Health', 'Luck'],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+            },
+
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                y: 70,
+                layout: 'vertical'
+            },
+
+            series: []
+        }
+    };
+
+    function initSelect($newTemplate, id, nb)
+    {
+        var $select = $newTemplate.find('.' + id);
+        var options = '<option value="">' + id.charAt(0).toUpperCase() + id.slice(1); + '</option>';
+        $.each(data[id], function(idx, d) {
+            options += '<option value="' + d.code + '">' + d.name + '</option>';
+        } );
+
+        $select.append(options);
+    }
+
+    function getNbTemplates()
+    {
+        return $('#filters > div').length;
+    }
+
+    function duplicateTemplate(nb)
+    {
+        var $newTemplate = $('.templates').first().clone();
+        $newTemplate.data('nth', $newTemplate.data('nth') + nb);
+        $newTemplate.appendTo($('#filters')).show();
+
+        return $newTemplate;
+    }
+
+    function addTemplate()
+    {
+        // nth clone to create
+        var nb = getNbTemplates() + 1;
+
+        var $newTemplate = duplicateTemplate(nb);
+
+        $.each(['elements', 'tiers', 'classes', 'heroes'], function(idx, id) {
+            initSelect($newTemplate, id, nb);
+        } );
+
+        $newTemplate.find('.elements, .tiers, .classes').change(updateHeroes);
+        $newTemplate.find('.heroes').change(updateStars);
+
+        $newTemplate.find('.stars').change(updateLevels).append('<option value="">Evolutions</option>');
+        $newTemplate.find('.levels').append('<option value="">Levels</option>');
+
+        $newTemplate.find('.heroes, .stars, .levels').change(updateChart);
+
+        $newTemplate.find('.vss').change(addOrRemoveTemplate);
+
+        if ($newTemplate.data('nth') > 1) {
+            disablePreviousVss($newTemplate);
+        }
+    }
+
+    function disablePreviousVss($lastTemplate)
+    {
+        var nth = $lastTemplate.data('nth');
+
+        $('#filters').find('.templates').each(function(idx, template) {
+            var $template = $(template);
+            if ($template.data('nth') < nth - 1) {
+                $template.find('.vss').prop('disabled', true);
+            }
+        } );
+    }
+
+    function activatePreviousVs($lastTemplate)
+    {
+        var nth = $lastTemplate.data('nth');
+
+        $('#filters').find('.templates').each(function(idx, template) {
+            var $template = $(template);
+            if ($template.data('nth') == nth - 2) {
+                $template.find('.vss').prop('disabled', false);
+                return false;
+            }
+        } );
+    }
+
+    function removeTemplate($template)
+    {
+        activatePreviousVs($template);
+        $template.remove();
+    }
+
+    function findFirstTemplate()
+    {
+        return $('#filters .templates').first();
+    }
+
+    function findLastTemplate()
+    {
+        return $('#filters .templates').last();
+    }
+
+    function addOrRemoveTemplate(event)
+    {
+        var $vs = $(event.target);
+        var $template = findElementTemplate($vs);
+
+        if ($vs.is(':checked')) {
+            addTemplate();
+        } else {
+            removeTemplate(findLastTemplate());
+        }
+    }
+
+    function findElementTemplate($element)
+    {
+        return $element.parents('.templates').first();
+    }
+
+    function updateHeroes(event)
+    {
+        var $template = findElementTemplate($(event.target));
+        var element = $template.find('.elements').val();
+        var tier = $template.find('.tiers').val();
+        var classs = $template.find('.classes').val();
+        var options = '<option value="">Heroes</option>';
+
+        $.each(data.heroes, function(idx, hero) {
+            if (
+                (hero.element == element || element == '') &&
+                (hero.class == classs || classs == '') &&
+                (hero.tier == tier || tier == '')
+            ) {
+                options += '<option value="' + hero.code + '">' + hero.name + '</option>';
+            }
+        } );
+
+        $template.find('.heroes').empty().append(options)
+    }
+
+    function updateStars(event)
+    {
+        var $template = findElementTemplate($(event.target));
+        var stars = 0;
+        var options = '<option value="">Evolutions</option>';
+        var hero = getDataByCode('heroes', $template.find('.heroes').val());
+
+        if (hero) {
+            stars = hero.evolutions.length;
+        }
+
+        for (var star = 1; star <= stars; star++) {
+            options += '<option value="' + star + '">' + Array(star + 1).join('*') + '</option>';
+        }
+
+        $template.find('.stars').empty().append(options)
+    }
+
+    function updateLevels(event)
+    {
+        var $template = findElementTemplate($(event.target));
+        var options = '<option value="">Levels</option>';
+        var hero = getDataByCode('heroes', $template.find('.heroes').val());
+        var stars = $template.find('.stars').val() ? $template.find('.stars').val() : 1;
+
+        if (hero) {
+            $.each(hero.evolutions, function(idx, evolution) {
+                if (evolution.stars == stars) {
+                    $.each(evolution.stats, function(idx, stat) {
+                        options += '<option value="' + stat.level + '">Lvl ' + stat.level + '</option>';
+                    } );
+                }
+            } );
+        }
+
+        $template.find('.levels').empty().append(options)
+    }
+
+    function getHeroEvolution(hero, stars)
+    {
+        var heroEvolution;
+
+        $.each(hero.evolutions, function(idx, evolution) {
+            if (evolution.stars == stars) {
+                heroEvolution = evolution;
+                return false;
+            }
+        } );
+
+        return heroEvolution;
+    }
+
+    function getHeroStat(hero, stars, level)
+    {
+        var getHeroStat;
+        var heroEvolution = getHeroEvolution(hero, stars);
+
+        if (heroEvolution) {
+            $.each(heroEvolution.stats, function(idx, stat) {
+                if (stat.level == level) {
+                    getHeroStat = stat;
+                }
+            } );
+        }
+
+        return getHeroStat;
+    }
+
+    function getDataByCode(type, code)
+    {
+        var found = null;
+
+        $.each(data[type], function(idx, d) {
+            if (d.code == code) {
+                found = d;
+                return false;
+            }
+        } );
+
+        return found;
+    }
+
+    function updateChart(event)
+    {
+        var checked = false;
+        $('#filters .vss').each(function(idx, vss) {
+            if ($(vss).is(':checked')) {
+                checked = true;
+                return false;
+            }
+        } );
+
+        if (checked) {
+            updateVsChart();
+        } else {
+            updateSoloChart();
+        }
+    }
+
+    function updateSoloChart()
+    {
+        var $template = findFirstTemplate();
+        var hero = getDataByCode('heroes', $template.find('.heroes').val());
+        var stars = $template.find('.stars').val() ? $template.find('.stars').val() : 1;
+        var level = $template.find('.levels').val();
+        var evolution = getHeroEvolution(hero, stars);
+        var highcharts = data.highcharts;
+        highcharts.series = [];
+
+        if (hero) {
+            $.each(evolution.stats, function(idx, stat) {
+                if (!level || level == stat.level) {
+                    highcharts.series.push( {
+                        name: 'Level ' + stat.level,
+                        data: [stat.strength, stat.magic, stat.defense, stat.resistance, stat.health, stat.luck],
+                        pointPlacement: 'on'
+                    } );
+                }
+            } );
+            highcharts.title.text = evolution.name;
+
+            $('#graph').highcharts(highcharts);
+        } else {
+//            // @todo
+//            $('#graph').empty();
+        }
+    }
+
+    function updateVsChart()
+    {
+        var $templates = $('#filters .templates');
+        var evolutionNames = [];
+        var highcharts = data.highcharts;
+        highcharts.series = [];
+
+        $templates.each(function(idx, template) {
+            var $template = $(template);
+            var hero = getDataByCode('heroes', $template.find('.heroes').val());
+            var stars = $template.find('.stars').val() ? $template.find('.stars').val() : 1;
+            var level = $template.find('.levels').val() ? $template.find('.levels').val() : 1;
+            var stat, evolution;
+
+            if (hero && (evolution = getHeroEvolution(hero, stars)) && (stat = getHeroStat(hero, stars, level))) {
+                highcharts.series.push( {
+                    name: evolution.name + ' lvl ' + stat.level,
+                    data: [stat.strength, stat.magic, stat.defense, stat.resistance, stat.health, stat.luck],
+                    pointPlacement: 'on'
+                } );
+
+                if (!$.inArray(evolution.name, evolutionNames)) {
+                    evolutionNames.push(evolution.name);
+                }
+            }
+        } );
+
+        highcharts.title.text = evolutionNames.join(' vs ');
+
+        $('#graph').highcharts(highcharts);
+    }
+
+    addTemplate();
+
+});
+</script>
+
+    </body>
+</html>
