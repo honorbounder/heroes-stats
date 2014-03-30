@@ -105,6 +105,16 @@ $(function () {
             description: "Make an enemy take extra damage over time.",
             mana: 8
         }, {
+            name: "Demoralizing Cry",
+            code: 'demoralizing-cry',
+            description: "Weaken all enemies physical defense.",
+            mana: 0 // passive
+        }, {
+            name: "Frightful Visage",
+            code: 'frightful-visage',
+            description: "Stun an enemy for one round.",
+            mana: 10
+        }, {
             name: "Hunter's Eye",
             code: 'hunter-s-eye',
             description: "Diminish all enemies physical attack attribute.",
@@ -129,6 +139,11 @@ $(function () {
             code: 'rain-of-arrows',
             description: "Attack all enemies for extra damage.",
             mana: -1 // unknown
+        }, {
+            name: "Rend and tear",
+            code: 'rend-and-tear',
+            description: "Attack a chain of enemies.",
+            mana: 4
         }, {
             name: "Righteous Volley",
             code: 'righteous-volley',
@@ -359,6 +374,7 @@ $(function () {
                     {level: 25,       strength:    1633, magic:     928, defense:    1392, resistance:     855, health:    1347, luck:    1610},
                     {level: 30,       strength:    2017, magic:    1102, defense:    1704, resistance:    1009, health:    1644, luck:    1990},
                     {level: 35,       strength:    2534, magic:    1337, defense:    2125, resistance:    1216, health:    2043, luck:    2500},
+                    {level: 40,       strength:    2891, magic:    1499, defense:    2415, resistance:    1359, health:    2319, luck:    2853},
                 ]
             } ],
 
@@ -435,10 +451,40 @@ $(function () {
             class: 'archer',
             abilities: ['aim-shot', 'predator-s-mark', 'arrow-of-thunder'],
             evolutions: [ {
-                name: "Tundra Goblin Shootere+",
+                name: "Tundra Goblin Shooter+",
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     242, magic:     254, defense:     207, resistance:     232, health:     202, luck:     208},
+                ]
+            } ],
+
+        },  {
+
+            name: "Vampire Bat",
+            code: 'vampire-bat',
+            wiki: 'Vampire_Bat',
+            element: 'abyss',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['rend-and-tear', 'demoralizing-cry', 'frightful-visage'],
+            evolutions: [ {
+                name: "Vampire Bat+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     254, magic:     198, defense:     221, resistance:     207, health:     222, luck:     242},
+                ]
+            }, {
+                name: "Vampire Bat++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     292, magic:     233, defense:     257, resistance:     242, health:     258, luck:     279},
+                ]
+            }, {
+                name: "Vampire Bat+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     361, magic:     293, defense:     320, resistance:     303, health:     321, luck:     345},
+                    {level: 50,       strength:    3827, magic:    1753, defense:    2468, resistance:    1929, health:    2659, luck:    3372},
                 ]
             } ],
         } ],
