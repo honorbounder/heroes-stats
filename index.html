@@ -110,6 +110,11 @@ $(function () {
             description: "Attack a single enemy and weaken their magical attack power.",
             mana: -1 // unknown
         }, {
+            name: "Assassinate",
+            code: 'assassinate',
+            description: "Ambush a single enemy for massive damage in one round.",
+            mana: -1 // unknown
+        }, {
             name: "Barbed Arrows",
             code: 'barbed-arrows',
             description: "Cause a single enemy to take damage over time.",
@@ -119,6 +124,11 @@ $(function () {
             code: 'bash',
             description: "Stun an enemy for one round.",
             mana: -1 // unknown
+        }, {
+            name: "Blinding Powder",
+            code: 'blinding-powder',
+            description: "Stun a chain of enemies.",
+            mana: 12
         }, {
             name: "Deadly Poison",
             code: 'deadly-poison',
@@ -140,10 +150,40 @@ $(function () {
             description: "Attack a single enemy for massive damage.",
             mana: -1 // unknown
         }, {
+            name: "Flashing Blades",
+            code: 'flashing-blades',
+            description: "Cause a chain of enemies to take damage over time.",
+            mana: 10
+        }, {
+            name: "Flurry",
+            code: 'flurry',
+            description: "Attack a chain of enemies.",
+            mana: 8
+        }, {
             name: "Frightful Visage",
             code: 'frightful-visage',
             description: "Stun an enemy for one round.",
             mana: 10
+        }, {
+            name: "Garrote",
+            code: 'garrote',
+            description: "Make an enemy lose a lot of health over time.",
+            mana: -1 // unknown
+        }, {
+            name: "Gambler's trick",
+            code: 'gambler-s-trick',
+            description: "Grant allies a minor buff to their luck attribute.",
+            mana: 0 // passive
+        }, {
+            name: "Gambler's ruse",
+            code: 'gambler-s-ruse',
+            description: "Grant allies a major buff to their luck attribute.",
+            mana: 0 // passive
+        }, {
+            name: "Haste",
+            code: 'haste',
+            description: "Grant your squad an initiative boost.",
+            mana: 0 // passive
         }, {
             name: "Hunter's Eye",
             code: 'hunter-s-eye',
@@ -189,6 +229,16 @@ $(function () {
             code: 'minor-heal',
             description: "Heal a single target for moderate HP.",
             mana: 3
+        }, {
+            name: "Minor Poison",
+            code: 'minor-poison',
+            description: "Make an enemy take damage over time.",
+            mana: -1 // unkown
+        }, {
+            name: "Necrotic Cut",
+            code: 'necrotic-cut',
+            description: "Cause a single enemy to take damage over time.",
+            mana: -1 // unknown
         }, {
             name: "Poison Arrow",
             code: 'poison-arrow',
@@ -270,6 +320,11 @@ $(function () {
             description: "Diminish all enemies luck attribute by a large amount.",
             mana: 0 // passive
         }, {
+            name: "Swindler's trick",
+            code: 'swindler-s-trick',
+            description: "Diminish all enemies luck attribute.",
+            mana: 0 // passive
+        }, {
             name: "Varra's Arrow",
             code: 'varra-s-arrow',
             description: "Attack a single enemy and make them lose health over time.",
@@ -332,6 +387,46 @@ $(function () {
 
         },  {
 
+            name: "Badlands Drake",
+            code: 'badlands-drake',
+            wiki: 'Badlands_Drake',
+            element: 'terra',
+            tier: 'epic',
+            class: 'rogue',
+            abilities: ['steal', 'flurry', 'gambler-s-ruse'],
+            evolutions: [ {
+                name: "Badlands Drake",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     323, magic:     271, defense:     311, resistance:     267, health:     295, luck:     322},
+                ]
+			} ]
+
+        },  {
+
+            name: "Bandit Assassin",
+            code: 'bandit-assassin',
+            wiki: 'Bandit_Assassin',
+            element: 'terra',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'flurry', 'gambler-s-trick'],
+            evolutions: [ {
+                name: "Bandit Assassin",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     207, magic:     169, defense:     192, resistance:     169, health:     191, luck:     207},
+                ]
+            }, {
+                name: "Bandit Assassin+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     242, magic:     202, defense:     227, resistance:     202, health:     226, luck:     242},
+                ]
+			} ]
+
+        },  {
+
             name: "Bandit Cleric",
             code: 'bandit-cleric',
             wiki: 'Bandit_Cleric',
@@ -367,6 +462,46 @@ $(function () {
 
         },  {
 
+            name: "Bandit Leader",
+            code: 'bandit-leader',
+            wiki: 'Bandit_Leader',
+            element: 'terra',
+            tier: 'epic',
+            class: 'rogue',
+            abilities: ['steal', 'flurry', 'gambler-s-ruse'],
+            evolutions: [ {
+                name: "Bandit Leader",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     279, magic:     237, defense:     263, resistance:     237, health:     262, luck:     279},
+                ]
+            }, {
+                name: "Bandit Leader+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     318, magic:     274, defense:     301, resistance:     274, health:     300, luck:     318},
+                ]
+            } ]
+
+        },  {
+
+            name: "Big Ballow",
+            code: 'big-ballow',
+            wiki: 'Big_Ballow',
+            element: 'terra',
+            tier: 'epic',
+            class: 'rogue',
+            abilities: ['steal', 'flurry', 'haste'],
+            evolutions: [ {
+                name: "Big Ballow",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     317, magic:     275, defense:     301, resistance:     275, health:     299, luck:     316},
+                ]
+            } ]
+
+        },  {
+
             name: "Beorin",
             code: 'beorin',
             wiki: 'Beorin',
@@ -385,6 +520,29 @@ $(function () {
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     394, magic:     345, defense:     382, resistance:     338, health:     409, luck:     337},
+                ]
+            } ]
+
+        },  {
+
+            name: "Chosen Assassin",
+            code: 'chosen-assassin',
+            wiki: 'Chosen_Assassin',
+            element: 'abyss',
+            tier: 'epic',
+            class: 'rogue',
+            abilities: ['steal', 'swindler-s-ruse', 'assassinate'],
+            evolutions: [ {
+                name: "Chosen Assassin",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     323, magic:     283, defense:     296, resistance:     275, health:     277, luck:     347},
+                ]
+            }, {
+                name: "Chosen Assassin+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     396, magic:     350, defense:     365, resistance:     341, health:     343, luck:     423},
                 ]
             } ]
 
@@ -523,6 +681,99 @@ $(function () {
 
         },  {
 
+			name: "Giant Rat",
+            code: 'giant-rat',
+            wiki: 'Giant_Rat',
+            element: 'abyss',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'swindler-s-trick', 'necrotic-cut'],
+            evolutions: [ {
+                name: "Giant Rat",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     202, magic:     173, defense:     183, resistance:     173, health:     183, luck:     223},
+                ]
+            }, {
+                name: "Giant Rat+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     237, magic:     207, defense:     217, resistance:     207, health:     217, luck:     259},
+                ]
+            }, {
+                name: "Giant Rat++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     274, magic:     242, defense:     253, resistance:     242, health:     253, luck:     297},
+                ]
+            }, {
+                name: "Giant Rat+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     313, magic:     279, defense:     291, resistance:     279, health:     291, luck:    337},
+                ]
+            } ]
+
+        },  {
+
+			name: "Ghost",
+            code: 'ghost',
+            wiki: 'Ghost',
+            element: 'spirit',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'flashing-blades', 'blinding-powder'],
+            evolutions: [ {
+                name: "Ghost",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     202, magic:     173, defense:     202, resistance:     158, health:     291, luck:     212},
+                ]
+            }, {
+                name: "Ghost+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     237, magic:     207, defense:     237, resistance:     191, health:     226, luck:     248},
+                ]
+            }, {
+                name: "Ghost++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     274, magic:     242, defense:     274, resistance:     226, health:     262, luck:     285},
+                ]
+            }, {
+                name: "Ghost+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     313, magic:     279, defense:     313, resistance:     262, health:     300, luck:     324},
+                ]
+            } ]
+
+        },  {
+
+			name: "Glacial Hunter",
+            code: 'glacial-hunter',
+            wiki: 'Glacial_Hunter',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'garrote', 'deadly-poison'],
+            evolutions: [ {
+                name: "Glacial Hunter",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     197, magic:     169, defense:     202, resistance:     176, health:     178, luck:     223},
+                ]
+            }, {
+                name: "Glacial Hunter+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     232, magic:     202, defense:     237, resistance:     210, health:     122, luck:     259},
+                ]
+            } ]
+
+        },  {
+
             name: "Godsworn Shaman",
             code: 'godsworn-shaman',
             wiki: 'Godsworn_Shaman',
@@ -617,6 +868,29 @@ $(function () {
                 stars: 4,
                 stats: [
                     {level:  1,       strength:     322, magic:     308, defense:     362, resistance:     321, health:     335, luck:     298},
+                ]
+            } ]
+
+        },  {
+
+            name: "Greenmist Drake",
+            code: 'greenmist-drake',
+            wiki: 'Greenmist_Drake',
+            element: 'terra',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'garrote', 'flurry'],
+            evolutions: [ {
+                name: "Green Knight",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     213, magic:     173, defense:     183, resistance:     173, health:     183, luck:     212},
+                ]
+            }, {
+                name: "Green Knight+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     249, magic:     207, defense:     217, resistance:     207, health:     217, luck:     248},
                 ]
             } ]
 
@@ -745,6 +1019,23 @@ $(function () {
                 stars: 4,
                 stats: [
                     {level:  1,       strength:    1055, magic:     952, defense:    1100, resistance:    1017, health:    1098, luck:     940},
+                ]
+            } ]
+
+        },  {
+
+            name: "Kharaz Marauder ",
+            code: 'kharaz-marauder ',
+            wiki: 'Kharaz_RMarauder ',
+            element: 'terra',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'slice', 'flurry'],
+            evolutions: [ {
+                name: "Kharaz Marauder++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     219, magic:     187, defense:     190, resistance:     171, health:     264, luck:     230},
                 ]
             } ]
 
@@ -888,6 +1179,70 @@ $(function () {
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     232, magic:     195, defense:     248, resistance:     212, health:     242, luck:     214},
+                ]
+            } ]
+
+        },  {
+
+            name: "Marshland Shadow",
+            code: 'marshland-shadow',
+            wiki: 'Marshland_Shadow',
+            element: 'abyss',
+            tier: 'epic',
+            class: 'rogue',
+            abilities: ['steal', 'necrotic-cut', 'assassinate'],
+            evolutions: [ {
+                name: "Marshland Shadow",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     328, magic:     275, defense:     291, resistance:     279, health:     286, luck:     329},
+                ]
+            }, {
+                name: "Marshland Shadow+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     369, magic:     314, defense:     331, resistance:     318, health:     325, luck:     370},
+                ]
+            }, {
+                name: "Marshland Shadow++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     446, magic:     384, defense:     404, resistance:     388, health:     396, luck:     448},
+                ]
+            }, {
+                name: "Marshland Shadow+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     458, magic:     398, defense:     417, resistance:     402, health:     409, luck:     460},
+                ]
+            } ]
+
+        },  {
+
+            name: "Nightshade Eviscerator",
+            code: 'nightshade-eviscerator',
+            wiki: 'Nightshade_Eviscerator',
+            element: 'abyss',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'minor-poison', 'necrotic-cut'],
+            evolutions: [ {
+                name: "Nightshade Eviscerator",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     225, magic:     179, defense:     208, resistance:     171, health:     255, luck:     225},
+                ]
+            }, {
+                name: "Nightshade Eviscerator++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     242, magic:     192, defense:     223, resistance:     183, health:     275, luck:     242},
+                ]
+            }, {
+                name: "Nightshade Eviscerator+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     261, magic:     213, defense:     243, resistance:     205, health:     293, luck:     261},
                 ]
             } ]
 
@@ -1190,6 +1545,23 @@ $(function () {
 
         },  {
 
+            name: "Tempest Pirate",
+            code: 'tempest-pirate',
+            wiki: 'Tempest_Pirate',
+            element: 'spirit',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal'],
+            evolutions: [ {
+                name: "Tempest Pirate+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     249, magic:     207, defense:     232, resistance:     198, health:     204, luck:     259},
+                ]
+            } ],
+
+        },  {
+
             name: "Tundra Goblin Dead-Eye",
             code: 'tundra-goblin-dead-eye',
             wiki: 'Tundra_Goblin_Dead-Eye',
@@ -1225,6 +1597,29 @@ $(function () {
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     242, magic:     254, defense:     207, resistance:     232, health:     202, luck:     208},
+                ]
+            } ],
+
+        },  {
+
+            name: "Tundra Goblin Warlord",
+            code: 'tundra-goblin-warlord',
+            wiki: 'Tundra_Goblin_Warlord',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'rogue',
+            abilities: ['steal', 'swindler-s-ruse', 'deadly-poison'],
+            evolutions: [ {
+                name: "Tundra Goblin Warlord",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     269, magic:     253, defense:     263, resistance:     246, health:     248, luck:     273},
+                ]
+			}, {
+                name: "Tundra Goblin Warlord+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     307, magic:     291, defense:     301, resistance:     283, health:     285, luck:     312},
                 ]
             } ],
 
