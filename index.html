@@ -280,6 +280,11 @@ $(function () {
             description: "Stun an enemy for one round.",
             mana: 8
         }, {
+            name: "Slow",
+            code: 'slow',
+            description: "Diminish the initiative of an opposing squad.",
+            mana: 0 // passive
+        }, {
             name: "Smite",
             code: 'smite',
             description: "Do increased damage to a single enemy.",
@@ -400,7 +405,7 @@ $(function () {
                 stats: [
                     {level:  1,       strength:     323, magic:     271, defense:     311, resistance:     267, health:     295, luck:     322},
                 ]
-			} ]
+            } ]
 
         },  {
 
@@ -423,7 +428,7 @@ $(function () {
                 stats: [
                     {level:  1,       strength:     242, magic:     202, defense:     227, resistance:     202, health:     226, luck:     242},
                 ]
-			} ]
+            } ]
 
         },  {
 
@@ -681,7 +686,7 @@ $(function () {
 
         },  {
 
-			name: "Giant Rat",
+            name: "Giant Rat",
             code: 'giant-rat',
             wiki: 'Giant_Rat',
             element: 'abyss',
@@ -716,7 +721,7 @@ $(function () {
 
         },  {
 
-			name: "Ghost",
+            name: "Ghost",
             code: 'ghost',
             wiki: 'Ghost',
             element: 'spirit',
@@ -751,7 +756,7 @@ $(function () {
 
         },  {
 
-			name: "Glacial Hunter",
+            name: "Glacial Hunter",
             code: 'glacial-hunter',
             wiki: 'Glacial_Hunter',
             element: 'lunar',
@@ -1019,6 +1024,41 @@ $(function () {
                 stars: 4,
                 stats: [
                     {level:  1,       strength:    1055, magic:     952, defense:    1100, resistance:    1017, health:    1098, luck:     940},
+                ]
+            } ]
+
+        },  {
+
+            name: "High Queen Sigrid",
+            code: 'high-queen-sigrid',
+            wiki: 'High_Queen_Sigrid',
+            element: 'abyss',
+            tier: 'epic',
+            class: 'rogue',
+            abilities: ['steal', 'deadly-poison', 'slow'],
+            evolutions: [ {
+                name: "High Queen Sigrid",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     334, magic:     303, defense:     260, resistance:     287, health:     308, luck:     347},
+                ]
+            }, {
+                name: "High Queen Sigrid+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     409, magic:     373, defense:     324, resistance:     354, health:     378, luck:     423},
+                ]
+            }, {
+                name: "High Queen Sigrid++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     457, magic:     418, defense:     367, resistance:     399, health:     424, luck:     471},
+                ]
+            }, {
+                name: "Sigrid, the Queen of Venom",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     505, magic:     465, defense:     411, resistance:     444, health:     471, luck:     520},
                 ]
             } ]
 
@@ -1442,7 +1482,7 @@ $(function () {
                     {level: 30,       strength:    2017, magic:    1102, defense:    1704, resistance:    1009, health:    1644, luck:    1990},
                     {level: 35,       strength:    2534, magic:    1337, defense:    2125, resistance:    1216, health:    2043, luck:    2500},
                     {level: 40,       strength:    2891, magic:    1499, defense:    2415, resistance:    1359, health:    2319, luck:    2853},
-                    {level: 45,       strength:    3363, magic:    1713, defense:    2799, resistance:    1548, health:    2684, luck:    3319},
+                    {level: 45,       strength:    3363, magic:    1713, defense:    2799, resistance:    1548, health:    2684, luck:    2853},
                 ]
             } ],
 
@@ -1616,7 +1656,7 @@ $(function () {
                 stats: [
                     {level:  1,       strength:     269, magic:     253, defense:     263, resistance:     246, health:     248, luck:     273},
                 ]
-			}, {
+            }, {
                 name: "Tundra Goblin Warlord+",
                 stars: 2,
                 stats: [
