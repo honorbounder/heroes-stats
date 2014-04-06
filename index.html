@@ -105,6 +105,11 @@ $(function () {
             description: "Attack a single target for extra damage.",
             mana: 4
         }, {
+            name: "Arcane Blast",
+            code: 'arcane-blast',
+            description: "Attack all enemies with a fiery maelstrom.",
+            mana: 5
+        }, {
             name: "Arrow of Thunder",
             code: 'arrow-of-thunder',
             description: "Attack a single enemy and weaken their magical attack power.",
@@ -130,6 +135,16 @@ $(function () {
             description: "Stun a chain of enemies.",
             mana: 12
         }, {
+            name: "Cleave",
+            code: 'cleave',
+            description: "Attack a chain of enemies.",
+            mana: 4
+        }, {
+            name: "Conflagration",
+            code: 'conflagration',
+            description: "Attack all enemies and make them lose health over time.",
+            mana: -1 // unknown
+        }, {
             name: "Deadly Poison",
             code: 'deadly-poison',
             description: "Make an enemy take extra damage over time.",
@@ -145,6 +160,16 @@ $(function () {
             description: "Weaken all enemies physical defense.",
             mana: 0 // passive
         }, {
+            name: "Demoralizing Roar",
+            code: 'demoralizing-roar',
+            description: "Weaken all enemies physical defense by a large amount.",
+            mana: 0 // passive
+        }, {
+            name: "Destruction",
+            code: 'destruction',
+            description: "Attack a single enemy for massive damage.",
+            mana: 12
+        }, {
             name: "Flamecall",
             code: 'flamecall',
             description: "Attack a single enemy for massive damage.",
@@ -152,6 +177,11 @@ $(function () {
         }, {
             name: "Flashing Blades",
             code: 'flashing-blades',
+            description: "Cause a chain of enemies to take damage over time.",
+            mana: 10
+        }, {
+            name: "Flowing Cut",
+            code: 'flowing-cut',
             description: "Cause a chain of enemies to take damage over time.",
             mana: 10
         }, {
@@ -164,6 +194,16 @@ $(function () {
             code: 'frightful-visage',
             description: "Stun an enemy for one round.",
             mana: 10
+        }, {
+            name: "Furious Cry",
+            code: 'curious-cry',
+            description: "Boost the party's physical attack power.",
+            mana: 0 // passive
+        }, {
+            name: "Furious Roar",
+            code: 'curious-roar',
+            description: "Boost the party's physcial attack power by a large amount. (10%-30%) Rank 1-3.",
+            mana: 0 // passive
         }, {
             name: "Garrote",
             code: 'garrote',
@@ -180,10 +220,25 @@ $(function () {
             description: "Grant allies a major buff to their luck attribute.",
             mana: 0 // passive
         }, {
+            name: "Glyph of Focus",
+            code: 'glyph-of-focus',
+            description: "Grant all allies a minor buff to their magical attack attribute.",
+            mana: 0 // passive
+        }, {
+            name: "Glyph of Shielding",
+            code: 'glyph-of-shielding',
+            description: "Grant a minor magical ward to all allies.",
+            mana: 0 // passive
+        }, {
             name: "Haste",
             code: 'haste',
             description: "Grant your squad an initiative boost.",
             mana: 0 // passive
+        }, {
+            name: "Head Crack",
+            code: 'head-crack',
+            description: "Attack a single enemy and weaken their magical attack power.",
+            mana: -1 // unknown
         }, {
             name: "Hunter's Eye",
             code: 'hunter-s-eye',
@@ -195,15 +250,35 @@ $(function () {
             description: "Diminish all enemies physical attack by a large amount. (10%-30%) Rank 1-3.",
             mana: 0 // passive
         }, {
+            name: "Ice Comet",
+            code: 'ice-comet',
+            description: "Attack all enemies with a comet blast.",
+            mana: 8
+        }, {
+            name: "Ice Storm",
+            code: 'ice-storm',
+            description: "Attack all enemies and weaken their physical attack power.",
+            mana: 15
+        }, {
             name: "Impale",
             code: 'impale',
             description: "Attack a single enemy for high damage.",
-            mana: -1 // unkown
+            mana: -1 // unknown
+        }, {
+            name: "Justice",
+            code: 'justice',
+            description: "Attack a chain of enemies for extra damage.",
+            mana: 10
         }, {
             name: "Lance",
             code: 'lance',
             description: "Attack a single enemy for massive damage.",
             mana: 8
+        }, {
+            name: "Lightning Strike",
+            code: 'lightning-strike',
+            description: "Attack a chain of enemies with a magical lightning bolt.",
+            mana: -1 // unknown
         }, {
             name: "Lunar Ward",
             code: 'lunar-ward',
@@ -233,11 +308,21 @@ $(function () {
             name: "Minor Poison",
             code: 'minor-poison',
             description: "Make an enemy take damage over time.",
-            mana: -1 // unkown
+            mana: -1 // unknown
         }, {
             name: "Necrotic Cut",
             code: 'necrotic-cut',
             description: "Cause a single enemy to take damage over time.",
+            mana: -1 // unknown
+        }, {
+            name: "Noxious Cloud",
+            code: 'noxious-cloud',
+            description: "Cause all enemies to lose health over time.",
+            mana: 15
+        }, {
+            name: "Piercing Light",
+            code: 'piercing-light',
+            description: "Deal damage to a single enemy and stun them.",
             mana: -1 // unknown
         }, {
             name: "Poison Arrow",
@@ -245,30 +330,60 @@ $(function () {
             description: "Cause a single enemy to take damage over time.",
             mana: 0 // passive
         }, {
+            name: "Poison Bolt",
+            code: 'poison-bolt',
+            description: "Attack a chain of enemies with a poisonous hex.",
+            mana: -1 // unknown
+        }, {
             name: "Predator's Mark",
             code: 'predator-s-mark',
             description: "Diminish all enemies magical attack attribute by a large amount.",
             mana: 0 // passive
+        }, {
+            name: "Primal Bow",
+            code: 'primal-bow',
+            description: "Cause a single enemy to take damage over time.",
+            mana: -1 // unknown
         }, {
             name: "Primal Fusion",
             code: 'primal-fusion',
             description: "Make all party members regenerate health over time.",
             mana: 0 // passive
         }, {
+            name: "Punish",
+            code: 'punish',
+            description: "Strike a single enemy for extra damage.",
+            mana: 6
+        }, {
             name: "Rain of Arrows",
             code: 'rain-of-arrows',
             description: "Attack all enemies for extra damage.",
             mana: -1 // unknown
+        }, {
+            name: "Rend Armor",
+            code: 'rend-armor',
+            description: "Weaken a single enemy's physical defenses",
+            mana: 6
         }, {
             name: "Rend and tear",
             code: 'rend-and-tear',
             description: "Attack a chain of enemies.",
             mana: 4
         }, {
+            name: "Reap",
+            code: 'reap',
+            description: "Attack a chain of enemies for extra damage.",
+            mana: -1 // unknown
+        }, {
             name: "Resurrection",
             code: 'resurrection',
             description: "Resurrect a single downed target.",
             mana: 6
+        }, {
+            name: "Retribution",
+            code: 'retribution',
+            description: "Attack a single enemy for extra damage.",
+            mana: 8
         }, {
             name: "Righteous Volley",
             code: 'righteous-volley',
@@ -285,6 +400,11 @@ $(function () {
             description: "Diminish the initiative of an opposing squad.",
             mana: 0 // passive
         }, {
+            name: "Siphon Life",
+            code: 'siphon-life',
+            description: "Drain the health of all enemies.",
+            mana: 15
+        }, {
             name: "Smite",
             code: 'smite',
             description: "Do increased damage to a single enemy.",
@@ -298,12 +418,12 @@ $(function () {
             name: "Stalker's Eye",
             code: 'stalker-s-eye',
             description: "Diminish all enemies magical defense attribute.",
-            mana: -1 // unkown
+            mana: -1 // unknown
         }, {
             name: "Stalker's Mark",
             code: 'stalker-s-mark',
             description: "Diminish all enemies magical attack attribute by a large amount.",
-            mana: -1 // unkown
+            mana: -1 // unknown
         }, {
             name: "Stalwart Guard",
             code: 'stalwar-guard',
@@ -320,6 +440,11 @@ $(function () {
             description: "Attack a target and steal an item.",
             mana: 3
         }, {
+            name: "Sunspark",
+            code: 'sunspark',
+            description: "Attack a chain of enemies with a blinding flare.",
+            mana: 10
+        }, {
             name: "Swindler's ruse",
             code: 'swindler-s-ruse',
             description: "Diminish all enemies luck attribute by a large amount.",
@@ -330,10 +455,20 @@ $(function () {
             description: "Diminish all enemies luck attribute.",
             mana: 0 // passive
         }, {
+            name: "Symbol of Focus",
+            code: 'symbol-of-focus',
+            description: "Boost the party's magical attack by a large amount",
+            mana: 0 // passive
+        }, {
+            name: "Symbol of Shielding",
+            code: 'symbol-of-shielding',
+            description: "Grant a major magical ward to all allies.",
+            mana: 0 // passive
+        }, {
             name: "Varra's Arrow",
             code: 'varra-s-arrow',
             description: "Attack a single enemy and make them lose health over time.",
-            mana: -1 // unkown
+            mana: -1 // unknown
         }, {
             name: "Warding Guard",
             code: 'warding-guard',
@@ -347,7 +482,30 @@ $(function () {
         } ],
 
         heroes: [ {
-            name: "Alshin Dead-Eye",
+            name: "A'san, The Tempest",
+            code: 'A-san-the-tempest',
+            wiki: 'A%27san,_The_Tempest',
+            element: 'spirit',
+            tier: 'legendary',
+            class: 'warrior',
+            abilities: ['cleave', 'furious-roar', 'conviction'],
+            evolutions: [ {
+                name: "A'san, The Tempest",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     450, magic:     388, defense:     405, resistance:     379, health:     395, luck:     436},
+                ]
+            }, {
+                name: "A'san, The Tempest+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     543, magic:     470, defense:     490, resistance:     460, health:     479, luck:     526},
+                ]
+            } ]
+
+        },  {
+
+			name: "Alshin Dead-Eye",
             code: 'alshin-dead-eye',
             wiki: 'Alshin_Dead-Eye',
             element: 'spirit',
@@ -369,7 +527,8 @@ $(function () {
             } ]
 
         },  {
-            name: "Alshin Imperial Guard",
+
+			name: "Alshin Imperial Guard",
             code: 'alshin-imperial-guard',
             wiki: 'Alshin_Imperial_Guard',
             element: 'spirit',
@@ -392,6 +551,98 @@ $(function () {
 
         },  {
 
+			name: "Alshin Renegade",
+            code: 'alshin-renegade',
+            wiki: 'Alshin_Renegade',
+            element: 'spirit',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'rend-armor', 'justice'],
+            evolutions: [ {
+                name: "Alshin Renegade",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     223, magic:     180, defense:     178, resistance:     169, health:     183, luck:     202},
+                ]
+            }, {
+                name: "Alshin Renegade+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     259, magic:     214, defense:     212, resistance:     202, health:     217, luck:     237},
+                ]
+            } ]
+
+        },  {
+
+			name: "Alshin Scryer",
+            code: 'alshin-scryer',
+            wiki: 'Alshin_Scryer',
+            element: 'spirit',
+            tier: 'rare',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'sunspark', 'piercing-light'],
+            evolutions: [ {
+                name: "Alshin Scryer",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     180, magic:     223, defense:     169, resistance:     207, health:     165, luck:     192},
+                ]
+            }, {
+                name: "Alshin Scryer+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     214, magic:     259, defense:     202, resistance:     242, health:     198, luck:     227},
+                ]
+            } ]
+
+        },  {
+
+			name: "Archdruid",
+            code: 'archdruid',
+            wiki: 'Archdruid',
+            element: 'primal',
+            tier: 'epic',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'noxious-cloud', 'symbol-of-shielding'],
+            evolutions: [ {
+                name: "Archdruid",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     355, magic:     414, defense:     363, resistance:     414, health:     355, luck:     378},
+                ]
+            }, {
+                name: "Archdruid+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     433, magic:     501, defense:     442, resistance:     501, health:     433, luck:     459},
+                ]
+            } ]
+
+        },  {
+
+            name: "Badlands Brute",
+            code: 'badlands-brute',
+            wiki: 'Badlands_Brute',
+            element: 'terra',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'head-crack', 'destruction'],
+            evolutions: [ {
+                name: "Badlands Brute",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     316, magic:     275, defense:     286, resistance:     275, health:     326, luck:     306},
+                ]
+			}, {
+                name: "Badlands Brute+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     485, magic:     433, defense:     445, resistance:     433, health:     497, luck:     470},
+                ]
+            } ]
+
+        },  {
+
             name: "Badlands Drake",
             code: 'badlands-drake',
             wiki: 'Badlands_Drake',
@@ -404,6 +655,23 @@ $(function () {
                 stars: 1,
                 stats: [
                     {level:  1,       strength:     323, magic:     271, defense:     311, resistance:     267, health:     295, luck:     322},
+                ]
+            } ]
+
+        },  {
+
+            name: "Badlands Jackal",
+            code: 'badlands-jackal',
+            wiki: 'Badlands_Jackal',
+            element: 'terra',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['rend-and-tear', 'demoralizing-cry', 'head-crack'],
+            evolutions: [ {
+                name: "Badlands Jackal",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     229, magic:     173, defense:     183, resistance:     173, health:     174, luck:     207},
                 ]
             } ]
 
@@ -571,6 +839,23 @@ $(function () {
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     442, magic:     483, defense:     451, resistance:     475, health:     423, luck:     445},
+                ]
+            } ]
+
+        },  {
+
+            name: "Danarius the Warlock",
+            code: 'danarius-the-warlock',
+            wiki: 'Danarius_the_Warlock',
+            element: 'terra',
+            tier: 'legendary',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'conflagration', 'slow'],
+            evolutions: [ {
+                name: "Danarius the Warlock",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     379, magic:     450, defense:     379, resistance:     422, health:     379, luck:     423},
                 ]
             } ]
 
@@ -779,6 +1064,41 @@ $(function () {
 
         },  {
 
+            name: "Godsworn Leader",
+            code: 'godsworn-leader',
+            wiki: 'Godsworn_Leader',
+            element: 'lunar',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'retribution', 'furious-roar'],
+            evolutions: [ {
+                name: "Godsworn Leader",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     322, magic:     287, defense:     290, resistance:     279, health:     291, luck:     312},
+                ]
+            }, {
+                name: "Godsworn Leader+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     395, magic:     354, defense:     359, resistance:     345, health:     360, luck:     384},
+                ]
+            }, {
+                name: "Godsworn Leader++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     441, magic:     399, defense:     404, resistance:     390, health:     405, luck:     430},
+                ]
+            }, {
+                name: "Godsworn Leader+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     489, magic:     444, defense:     451, resistance:     435, health:     452, luck:     478},
+                ]
+            } ]
+
+        },  {
+
             name: "Godsworn Shaman",
             code: 'godsworn-shaman',
             wiki: 'Godsworn_Shaman',
@@ -901,6 +1221,64 @@ $(function () {
 
         },  {
 
+            name: "Greenmist Ogre Chief",
+            code: 'greenmist-ogre-chief',
+            wiki: 'Greenmist_Ogre_Chief',
+            element: 'terra',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'demoralizing-cry', 'head-crack'],
+            evolutions: [ {
+                name: "Green Ogre Chief",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     230, magic:     171, defense:     198, resistance:     168, health:     296, luck:     199},
+                ]
+            }, {
+                name: "Green Ogre High Chief",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     267, magic:     205, defense:     233, resistance:     201, health:     336, luck:     234},
+                ]
+            } ]
+
+        },  {
+
+            name: "Haven Champion",
+            code: 'haven-champion',
+            wiki: 'Haven_Champion',
+            element: 'primal',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'primal-bow', 'furious-roar'],
+            evolutions: [ {
+                name: "Haven Champion",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     329, magic:     275, defense:     290, resistance:     275, health:     311, luck:     306},
+                ]
+            }, {
+                name: "Haven Champion+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     370, magic:     314, defense:     330, resistance:     314, health:     352, luck:     346},
+                ]
+            }, {
+                name: "Haven Champion++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     414, magic:     355, defense:     372, resistance:     355, health:     395, luck:     388},
+                ]
+            }, {
+                name: "Haven Champion+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     460, magic:     398, defense:     416, resistance:     398, health:     440, luck:     433},
+                ]
+            } ]
+
+        },  {
+
             name: "Haven Gard Captain",
             code: 'haven-gard-captain',
             wiki: 'Haven_Gard_Captain',
@@ -922,13 +1300,13 @@ $(function () {
                 ]
             }, {
                 name: "Haven Gard Captain++",
-                stars: 2,
+                stars: 3,
                 stats: [
                     {level:  1,       strength:     388, magic:     355, defense:     406, resistance:     366, health:     407, luck:     355},
                 ]
             }, {
                 name: "Haven Gard Captain+++",
-                stars: 2,
+                stars: 4,
                 stats: [
                     {level:  1,       strength:     470, magic:     433, defense:     491, resistance:     445, health:     492, luck:     433},
                 ]
@@ -1064,9 +1442,89 @@ $(function () {
 
         },  {
 
-            name: "Kharaz Marauder ",
-            code: 'kharaz-marauder ',
-            wiki: 'Kharaz_RMarauder ',
+            name: "Icthyox",
+            code: 'icthyox',
+            wiki: 'Icthyox',
+            element: 'lunar',
+            tier: 'legendary',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'ice-storm', 'slow'],
+            evolutions: [ {
+                name: "Icthyox",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     388, magic:     443, defense:     392, resistance:     443, health:     388, luck:     395},
+                ]
+            } ]
+
+        },  {
+
+            name: "Ice Behemoth",
+            code: 'ice-behemoth',
+            wiki: 'Ice_Behemoth',
+            element: 'lunar',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'flowing-cut', 'reap'],
+            evolutions: [ {
+                name: "Ice Behemoth",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     297, magic:     250, defense:     243, resistance:     233, health:     258, luck:     269},
+                ]
+			}, {
+                name: "Ice Behemoth+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     370, magic:     316, defense:     308, resistance:     297, health:     325, luck:     337},
+                ]
+            } ]
+
+        },  {
+
+            name: "Ice Elemental",
+            code: 'ice-elemental',
+            wiki: 'Ice_Elemental',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'flowing-cut', 'reap'],
+            evolutions: [ {
+                name: "Ice Elemental",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     223, magic:     180, defense:     174, resistance:     165, health:     188, luck:     197},
+                ]
+			}, {
+                name: "Ice Elemental+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     259, magic:     214, defense:     208, resistance:     198, health:     222, luck:     232},
+                ]
+            } ]
+
+        },  {
+
+            name: "Kharaz Devastator",
+            code: 'kharaz-devastator',
+            wiki: 'Kharaz_Devastator',
+            element: 'terra',
+            tier: 'epic',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'symbol-of-focus', 'conflagration'],
+            evolutions: [ {
+                name: "Kharaz Devastator+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     354, magic:     410, defense:     337, resistance:     382, health:     337, luck:     383},
+                ]
+            } ]
+
+        },  {
+
+            name: "Kharaz Marauder",
+            code: 'kharaz-marauder',
+            wiki: 'Kharaz_Marauder',
             element: 'terra',
             tier: 'rare',
             class: 'rogue',
@@ -1201,6 +1659,41 @@ $(function () {
 
         },  {
 
+            name: "Marsh Goblin Witch",
+            code: 'marsh-goblin-witch',
+            wiki: 'Marsh_Goblin_Witch',
+            element: 'primal',
+            tier: 'epic',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'symbol-of-shielding', 'poison-bolt'],
+            evolutions: [ {
+                name: "Marsh Goblin Witch",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     283, magic:     304, defense:     279, resistance:     316, health:     283, luck:     311},
+                ]
+            }, {
+                name: "Marsh Goblin Witch+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     322, magic:     344, defense:     318, resistance:     357, health:     322, luck:     352},
+                ]
+            }, {
+                name: "Marsh Goblin Witch++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     386, magic:     386, defense:     359, resistance:     400, health:     396, luck:     395},
+                ]
+            }, {
+                name: "Marsh Goblin Witch+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     422, magic:     468, defense:     437, resistance:     485, health:     442, luck:     479},
+                ]
+            } ]
+
+        },  {
+
             name: "Marsh Goblin Defender",
             code: 'marsh-goblin-defender',
             wiki: 'Marsh_Goblin_Defender',
@@ -1254,6 +1747,29 @@ $(function () {
                 stars: 4,
                 stats: [
                     {level:  1,       strength:     458, magic:     398, defense:     417, resistance:     402, health:     409, luck:     460},
+                ]
+            } ]
+
+        },  {
+
+            name: "Naema",
+            code: 'naema',
+            wiki: 'Naema',
+            element: 'abyss',
+            tier: 'legendary',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'siphon-life', 'symbol-of-shielding'],
+            evolutions: [ {
+                name: "Naema",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     379, magic:     436, defense:     392, resistance:     450, health:     397, luck:     395},
+                ]
+            }, {
+                name: "Naema, The Destroyer",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     460, magic:     526, defense:     476, resistance:     543, health:     481, luck:     479},
                 ]
             } ]
 
@@ -1323,6 +1839,29 @@ $(function () {
 
         },  {
 
+            name: "Primal Elemental",
+            code: 'primal-elemental',
+            wiki: 'Primal_Elemental',
+            element: 'primal',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'primal-bow', 'demoralizing-cry'],
+            evolutions: [ {
+                name: "Primal Elemental",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     212, magic:     173, defense:     183, resistance:     173, health:     211, luck:     223},
+                ]
+            }, {
+                name: "Primal Elemental+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     269, magic:     224, defense:     235, resistance:     224, health:     268, luck:     281},
+                ]
+            } ]
+
+        },  {
+
             name: "Ranger of the Deepwood",
             code: 'ranger-of-the-deepwood',
             wiki: 'Ranger_of_the_Deepwood',
@@ -1341,6 +1880,58 @@ $(function () {
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     423, magic:     377, defense:     314, resistance:     362, health:     323, luck:     334},
+                ]
+            } ]
+
+        },  {
+
+            name: "Rimeholm Abomination",
+            code: 'rimeholm-abomination',
+            wiki: 'Rimeholm_Abomination',
+            element: 'abyss',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'frightful-visage', 'furious-cry'],
+            evolutions: [ {
+                name: "Rimeholm Abomination",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     347, magic:     303, defense:     254, resistance:     287, health:     321, luck:     334},
+                ]
+			}, {
+                name: "Rimeholm Abomination",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     423, magic:     373, defense:     317, resistance:     354, health:     394, luck:     409},
+                ]
+			}, {
+                name: "Rimeholm Abomination",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     471, magic:     418, defense:     360, resistance:     399, health:     440, luck:     457},
+                ]
+			}, {
+                name: "Rimeholm Abomination",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     520, magic:     465, defense:     404, resistance:     444, health:     488, luck:     505},
+                ]
+            } ]
+
+        },  {
+
+            name: "Rimeholm Executioner",
+            code: 'rimeholm-executioner',
+            wiki: 'Rimeholm_Executioner',
+            element: 'lunar',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'justice', 'punish'],
+            evolutions: [ {
+                name: "Rimeholm Executioner",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     235, magic:     158, defense:     191, resistance:     144, health:     229, luck:     192},
                 ]
             } ]
 
@@ -1386,6 +1977,23 @@ $(function () {
 
         },  {
 
+            name: "Rimeholm Chancellor",
+            code: 'rimeholm-chancellor',
+            wiki: 'Rimeholm_Chancellor',
+            element: 'abyss',
+            tier: 'epic',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'glyph-of-focus', 'slow'],
+            evolutions: [ {
+                name: "Rimeholm Chancellor",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     295, magic:     359, defense:     248, resistance:     335, health:     295, luck:     321},
+                ]
+            } ]
+
+        },  {
+
             name: "Rimeholm Kingwatcher",
             code: 'rimeholm-kingwatcher',
             wiki: 'Rimeholm_Kingwatcher',
@@ -1416,6 +2024,29 @@ $(function () {
                 stars: 4,
                 stats: [
                     {level:  1,       strength:     380, magic:     312, defense:     310, resistance:     277, health:     337, luck:     301},
+                ]
+            } ]
+
+        },  {
+
+            name: "Rimeholm Necromancer",
+            code: 'rimeholm-necromancer',
+            wiki: 'Rimeholm_Necromancer',
+            element: 'abyss',
+            tier: 'epic',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'poison-bolt', 'siphon-life'],
+            evolutions: [ {
+                name: "Rimeholm Necromancer",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     295, magic:     359, defense:     248, resistance:     335, health:     295, luck:     321},
+                ]
+            }, {
+                name: "Rimeholm Necromancer+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     389, magic:     493, defense:     322, resistance:     457, health:     389, luck:     432},
                 ]
             } ]
 
@@ -1476,17 +2107,140 @@ $(function () {
                     {level:  1,       strength:     452, magic:     394, defense:     432, resistance:     383, health:     435, luck:     445},
                     {level:  5,       strength:     553, magic:     440, defense:     514, resistance:     423, health:     513, luck:     545},
                     {level: 10,       strength:     748, magic:     527, defense:     672, resistance:     501, health:     663, luck:     737},
-                    {level: 15,       strength:     988, magic:     636, defense:     868, resistance:     597, health:     849, luck:     974},
+                    {level: 15,       strength:     988, magic:     636, defense:     868, resistance:     597, health:     849, luck:     974}, 
                     {level: 20,       strength:    1275, magic:     766, defense:    1101, resistance:     712, health:    1070, luck:    1258},
                     {level: 25,       strength:    1633, magic:     928, defense:    1392, resistance:     855, health:    1347, luck:    1610},
                     {level: 30,       strength:    2017, magic:    1102, defense:    1704, resistance:    1009, health:    1644, luck:    1990},
                     {level: 35,       strength:    2534, magic:    1337, defense:    2125, resistance:    1216, health:    2043, luck:    2500},
                     {level: 40,       strength:    2891, magic:    1499, defense:    2415, resistance:    1359, health:    2319, luck:    2853},
-                    {level: 45,       strength:    3363, magic:    1713, defense:    2799, resistance:    1548, health:    2684, luck:    2853},
+                    {level: 45,       strength:    3363, magic:    1713, defense:    2799, resistance:    1548, health:    2684, luck:    3323},
+                    {level: 50,       strength:    3961, magic:    1940, defense:    3207, resistance:    1749, health:    3071, luck:    3814},
+                    {level: 55,       strength:    4385, magic:    2176, defense:    3651, resistance:    1957, health:    3473, luck:    4328},
                 ]
             } ],
 
         },  {
+
+            name: "Rimeholm Warlord",
+            code: 'rimeholm-warlord',
+            wiki: 'Rimeholm_Warlord',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'retribution', 'flowing-cut'],
+            evolutions: [ {
+                name: "Rimeholm Warlord",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     223, magic:     165, defense:     187, resistance:     158, health:     211, luck:     197},
+                ]
+            }, {
+                name: "Rimeholm Warlord+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     259, magic:     198, defense:     221, resistance:     191, health:     247, luck:     232},
+                ]
+            } ],
+
+        },  {
+
+            name: "Risen Berserker",
+            code: 'risen-berserker',
+            wiki: 'Risen_Berserker',
+            element: 'abyss',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'frightful-visage', 'demoralizing-cry'],
+            evolutions: [ {
+                name: "Risen Berserker",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     201, magic:     173, defense:     187, resistance:     180, health:     202, luck:     187},
+                ]
+            } ],
+
+        },  {
+
+            name: "Risen Bloodmage",
+            code: 'risen-bloodmage',
+            wiki: 'Risen_Bloodmage',
+            element: 'abyss',
+            tier: 'rare',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'glyph-of-shielding', 'lightning-strike'],
+            evolutions: [ {
+                name: "Risen Bloodmage",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     165, magic:     212, defense:     176, resistance:     223, health:     180, luck:     179},
+                ]
+			}, {
+                name: "Risen Bloodmage+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     198, magic:     248, defense:     210, resistance:     259, health:     214, luck:     213},
+                ]
+			}, {
+                name: "Risen Bloodmage++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     233, magic:     285, defense:     246, resistance:     297, health:     250, luck:     249},
+                ]
+			}, {
+                name: "Risen Bloodmage+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     270, magic:     324, defense:     283, resistance:     337, health:     288, luck:     286},
+                ]
+            } ],
+
+        },  {
+
+            name: "Risen Rager",
+            code: 'risen-rager',
+            wiki: 'Risen_Rager',
+            element: 'abyss',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'frightful-visage', 'demoralizing-roar'],
+            evolutions: [ {
+                name: "Risen Rager",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     273, magic:     242, defense:     257, resistance:     250, health:     274, luck:     257},
+                ]
+			}, {
+                name: "Risen Rager+",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     335, magic:     299, defense:     317, resistance:     309, health:     336, luck:     317},
+                ]
+            } ],
+
+        },  {
+
+            name: "Runewood Alpha",
+            code: 'runewood-alpha',
+            wiki: 'Runewood_Alpha',
+            element: 'primal',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'furious-cry', 'primal-bow'],
+            evolutions: [ {
+                name: "Runewood Alpha",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     225, magic:     171, defense:     185, resistance:     179, health:     286, luck:     214},
+                ]
+            }, {
+                name: "Runewood Alpha+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     283, magic:     222, defense:     237, resistance:     230, health:     353, luck:     271},
+                ]
+            } ],
+
+		},  {
 
             name: "Runewood Bear",
             code: 'runewood-bear',
@@ -1511,6 +2265,41 @@ $(function () {
 
         },  {
 
+            name: "Runewood Forester",
+            code: 'runewood-forester',
+            wiki: 'Runewood_Forester',
+            element: 'primal',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'primal-bow', 'demoralizing-roar'],
+            evolutions: [ {
+                name: "Runewood Forester",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     341, magic:     279, defense:     281, resistance:     279, health:     301, luck:     306},
+                ]
+            }, {
+                name: "Runewood Forester+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     422, magic:     348, defense:     350, resistance:     348, health:     374, luck:     380},
+                ]
+            }, {
+                name: "Runewood Forester++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     427, magic:     359, defense:     361, resistance:     359, health:     383, luck:     388},
+                ]
+            }, {
+                name: "Runewood Forester+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     473, magic:     402, defense:     404, resistance:     402, health:     427, luck:     432},
+                ]
+            } ],
+
+        },  {
+
             name: "Runewood Ranger",
             code: 'runewood-ranger',
             wiki: 'Runewood_Ranger',
@@ -1529,6 +2318,29 @@ $(function () {
                 stars: 2,
                 stats: [
                     {level:  1,       strength:     265, magic:     237, defense:     198, resistance:     227, health:     207, luck:     212},
+                ]
+            } ],
+
+        },  {
+
+            name: "Runewood Screetch",
+            code: 'runewood-screetch',
+            wiki: 'Runewood_Screetch',
+            element: 'abyss',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'retribution', 'frightful-visage'],
+            evolutions: [ {
+                name: "Runewood Screetch",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     235, magic:     173, defense:     174, resistance:     173, health:     183, luck:     202},
+                ]
+            }, {
+                name: "Runewood Screetch+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     295, magic:     224, defense:     225, resistance:     224, health:     235, luck:     257},
                 ]
             } ],
 
@@ -1569,6 +2381,64 @@ $(function () {
 
         },  {
 
+            name: "Sug-Yougol Deep One",
+            code: 'sug-yougol-deep-one',
+            wiki: 'Sug-Yougol_Deep_One',
+            element: 'lunar',
+            tier: 'epic',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'ice-storm', 'symbol-of-focus'],
+            evolutions: [ {
+                name: "Sug-Yougol Deep One",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     279, magic:     329, defense:     283, resistance:     329, health:     279, luck:     286},
+                ]
+			}, {
+                name: "Sug-Yougol Deep One+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     345, magic:     402, defense:     350, resistance:     402, health:     345, luck:     363},
+                ]
+			}, {
+                name: "Sug-Yougol Deep One++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     359, magic:     414, defense:     363, resistance:     414, health:     359, luck:     366},
+                ]
+			}, {
+                name: "Sug-Yougol Deep One+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     437, magic:     500, defense:     441, resistance:     500, health:     437, luck:     444},
+                ]
+            } ],
+
+        },  {
+
+            name: "Swamp Troll Brute",
+            code: 'swamp-troll-brute',
+            wiki: 'Swamp_Troll_Brute',
+            element: 'abyss',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'punish', 'frightful-visage'],
+            evolutions: [ {
+                name: "Swamp Troll Brute",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     241, magic:     176, defense:     181, resistance:     157, health:     300, luck:     214},
+                ]
+			}, {
+                name: "Swamp Troll Brute+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     278, magic:     210, defense:     215, resistance:     190, health:     340, luck:     250},
+                ]
+            } ],
+
+        },  {
+
             name: "Tempest Marksman",
             code: 'tempest-marksman',
             wiki: 'Tempest_Marksman',
@@ -1581,6 +2451,29 @@ $(function () {
                 stars: 1,
                 stats: [
                     {level:  1,       strength:     223, magic:     202, defense:     176, resistance:     183, health:     161, luck:     191},
+                ]
+            } ],
+
+        },  {
+
+            name: "Tempest Captain",
+            code: 'tempest-captain',
+            wiki: 'Tempest_Captain',
+            element: 'spirit',
+            tier: 'epic',
+            class: 'warrior',
+            abilities: ['cleave', 'rend-armor', 'furious-roar'],
+            evolutions: [ {
+                name: "Tempest Captain+",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     297, magic:     242, defense:     257, resistance:     253, health:     249, luck:     286},
+                ]
+			}, {
+                name: "Tempest Captain++",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     337, magic:     279, defense:     295, resistance:     270, health:     286, luck:     325},
                 ]
             } ],
 
@@ -1691,6 +2584,70 @@ $(function () {
                 stats: [
                     {level:  1,       strength:     361, magic:     293, defense:     320, resistance:     303, health:     321, luck:     345},
                     {level: 50,       strength:    3827, magic:    1753, defense:    2468, resistance:    1929, health:    2659, luck:    3372},
+                ]
+            } ],
+
+        },  {
+
+            name: "Vengeful Spirit",
+            code: 'vengeful-spirit',
+            wiki: 'Vengeful_Spirit',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'warrior',
+            abilities: ['cleave', 'furious-cry', 'frightful-visage'],
+            evolutions: [ {
+                name: "Vengeful Spirit",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     201, magic:     187, defense:     183, resistance:     173, health:     183, luck:     202},
+                ]
+            }, {
+                name: "Vengeful Spirit+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     236, magic:     221, defense:     217, resistance:     207, health:     217, luck:     237},
+                ]
+            }, {
+                name: "Vengeful Spirit++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     273, magic:     257, defense:     253, resistance:     242, health:     253, luck:     274},
+                ]
+            }, {
+                name: "Vengeful Spirit+++",
+                stars: 4,
+                stats: [
+                    {level:  1,       strength:     312, magic:     295, defense:     291, resistance:     279, health:     291, luck:     313},
+                ]
+            } ],
+
+		},  {
+
+            name: "Winter Wolf",
+            code: 'winter-wolr',
+            wiki: 'Winter_Wolf',
+            element: 'lunar',
+            tier: 'rare',
+            class: 'wizard',
+            abilities: ['arcane-blast', 'ice-comet', 'ice-storm'],
+            evolutions: [ {
+                name: "Winter Wolf",
+                stars: 1,
+                stats: [
+                    {level:  1,       strength:     173, magic:     235, defense:     180, resistance:     190, health:     165, luck:     192},
+                ]
+            }, {
+                name: "Winter Wolf+",
+                stars: 2,
+                stats: [
+                    {level:  1,       strength:     207, magic:     272, defense:     214, resistance:     225, health:     198, luck:     227},
+                ]
+            }, {
+                name: "Winter Wolf++",
+                stars: 3,
+                stats: [
+                    {level:  1,       strength:     242, magic:     311, defense:     250, resistance:     261, health:     233, luck:     263},
                 ]
             } ],
         } ],
