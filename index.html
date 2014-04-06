@@ -18,6 +18,8 @@
         footer {text-align: center; font-size: 0.7em; color: #909090;}
 
         #filters {font-size: 14px;}
+        #table, #graph, footer {margin-top: 50px;}
+        #table table {margin-left: auto; margin-right: auto;}
         .label-vss {font-size: 18px;}
     </style>
 </head>
@@ -38,7 +40,10 @@
 
     </div>
 
-    <div id="graph" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+    <div id="graph" style="min-width: 400px; max-width: 600px; height: 400px; margin-left: auto; margin-right: auto;"></div>
+
+    <div id="table"></div>
+
     <script type="text/javascript">
 $(function () {
 
@@ -283,6 +288,8 @@ $(function () {
         } else {
             updateSoloChart();
         }
+
+        updateTable(checked);
     }
 
     function updateSoloChart()
@@ -344,6 +351,115 @@ $(function () {
         highcharts.title.text = evolutionNames.join(' vs ');
 
         $('#graph').highcharts(highcharts);
+    }
+
+    function dataForVsTable()
+    {
+        var $templates = $('#filters .templates');
+        var tableData = [];
+
+        $templates.each(function(idx, template) {
+            var $template = $(template);
+            var hero = honorbounder.util.getDataByCode('heroes', $template.find('.heroes').val());
+            var stars = $template.find('.stars').val() ? $template.find('.stars').val() : null;
+            var level = $template.find('.levels').val() ? $template.find('.levels').val() : null;
+            var stat, evolution;
+
+            var $g = $('#graph .highcharts-legend > g > g > g:nth-child(' + (idx + 1) + ')');
+            var color = $g.find('path').first().attr('stroke');
+
+            if (hero && (evolution = honorbounder.util.getHeroEvolution(hero, stars)) && (stat = honorbounder.util.getHeroStat(hero, stars, level))) {
+                var td = {
+                    name:       '<td><span style="color:' + color + '">' + evolution.name + '</span></td>',
+                    element:    '<td>' + honorbounder.util.getDataByCode('elements', hero.element).name + '</td>',
+                    tier:       '<td>' + honorbounder.util.getDataByCode('tiers', hero.tier).name + '</td>',
+                    class:      '<td>' + honorbounder.util.getDataByCode('classes', hero.class).name + '</td>',
+                    level:      '<td>Lvl ' + stat.level + '</td>',
+                    abilities:  '<td>' + honorbounder.util.getAbilitiesNames(hero.abilities).join(', ') + '</td>',
+                };
+                $.each(data.highcharts.series[idx].data, function(idxx, d) {
+                    td[data.highcharts.xAxis.categories[idxx].toLowerCase()] = '<td style="text-align:right;">' + d + '</td>';
+                } );
+
+                tableData.push(td);
+            }
+        } );
+
+        return tableData;
+    }
+
+    function dataForSoloTable()
+    {
+        var $template = $('#filters .templates:nth-child(1)');
+        var tableData = [];
+
+        var hero = honorbounder.util.getDataByCode('heroes', $template.find('.heroes').val());
+        var stars = $template.find('.stars').val() ? $template.find('.stars').val() : null;
+        var level = $template.find('.levels').val() ? $template.find('.levels').val() : null;
+        var stat, evolution;
+
+        if (hero && (evolution = honorbounder.util.getHeroEvolution(hero, stars)) && (stat = honorbounder.util.getHeroStat(hero, stars, level))) {
+            var tdTemplate = {
+                element:    '<td>' + honorbounder.util.getDataByCode('elements', hero.element).name + '</td>',
+                tier:       '<td>' + honorbounder.util.getDataByCode('tiers', hero.tier).name + '</td>',
+                class:      '<td>' + honorbounder.util.getDataByCode('classes', hero.class).name + '</td>',
+                abilities:  '<td>' + honorbounder.util.getAbilitiesNames(hero.abilities).join(', ') + '</td>',
+            };
+        }
+
+        $.each(data.highcharts.series, function(idx, d) {
+            var td = $.extend({}, tdTemplate);
+
+            var $g = $('#graph .highcharts-legend > g > g > g:nth-child(' + (idx + 1) + ')');
+            var color = $g.find('path').first().attr('stroke');
+
+            td.name     = '<td><span style="color:' + color + '">' + evolution.name + '</span></td>',
+            td.level = '<td>' + data.highcharts.series[idx].name + '</td>';
+
+            $.each(data.highcharts.series[idx].data, function(idxx, d) {
+                td[data.highcharts.xAxis.categories[idxx].toLowerCase()] = '<td style="text-align:right;">' + d + '</td>';
+            } );
+
+            tableData.push(td);
+        } );
+
+        return tableData;
+    }
+
+    function updateTable(vs)
+    {
+        var trs;
+        var cols = ['Name', 'Element', 'Tier', 'Class', 'Level', 'Abilities'].concat(data.highcharts.xAxis.categories);
+        var tableData = vs ? dataForVsTable() : dataForSoloTable();
+
+        trs = '<thead><tr>';
+        $.each(cols, function(idx, col) {
+            trs += '<th>' + col + '</th>';
+        } );
+        trs += '</tr></thead>';
+
+        trs += '<tbody>';
+
+        $.each(tableData, function(idx, d) {
+            trs += '<tr>';
+            trs += d.name; // Colored name
+            trs += d.element; // Element
+            trs += d.tier; // Tier
+            trs += d.class; // Class
+            trs += d.level; // Level
+            trs += d.abilities; // Abilities
+            trs += d.strength; // Strength
+            trs += d.magic; // Magic
+            trs += d.defense; // Defence
+            trs += d.resistance; // Resistance
+            trs += d.health; // Health
+            trs += d.luck; // Luck
+            trs += '</tr>';
+        } );
+        trs += '</tbody>';
+
+        $('#table').empty();
+        $('<table>').append(trs).appendTo('#table');
     }
 
     function setFooter()
