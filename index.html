@@ -4,9 +4,11 @@
     <title>Honorbound Heroes Stats</title>
     <meta charset="UTF-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/highcharts-more.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="./assets/jquery-bbq/jquery.ba-bbq.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Risque" rel="stylesheet" type="text/css">
 
     <script src="http://honorbounder.github.io/game-data/data.js"></script>
@@ -26,12 +28,12 @@
 <body>
 
     <div class="templates" data-nth="0" style="display:none; width:650px; margin-left: auto; margin-right: auto;">
-        <select class="elements"></select>
-        <select class="tiers"></select>
-        <select class="classes"></select>
-        <select class="heroes"></select>
-        <select class="stars"></select>
-        <select class="levels"></select>
+        <select class="elements" data-url="el"></select>
+        <select class="tiers" data-url="ti"></select>
+        <select class="classes" data-url="cl"></select>
+        <select class="heroes" data-url="he"></select>
+        <select class="stars" data-url="st"></select>
+        <select class="levels" data-url="le"></select>
         <br />
         <div style="text-align: center"><label class="label-vss">V.S</label><input type="checkbox" class="vss" /></div>
     </div>
@@ -133,7 +135,7 @@ $(function () {
         return $newTemplate;
     }
 
-    function addTemplate()
+    function addTemplate(data)
     {
         // nth clone to create
         var nb = getNbTemplates() + 1;
@@ -154,19 +156,37 @@ $(function () {
 
         $newTemplate.find('.vss').change(addOrRemoveTemplate);
 
+        $newTemplate.find('select, .vss').change(pushState);
+
         if ($newTemplate.data('nth') > 1) {
             disablePreviousVss($newTemplate);
+        }
+
+        if (data) {
+            var selects = ['elements', 'tiers', 'classes', 'heroes', 'stars', 'levels'];
+            $.each(data, function(url, d) {
+                $.each(selects, function(idxx, select) {
+                    var $select = $newTemplate.find('.' + select);
+                    if ($select.data('url') == url) {
+                        $select.val(d).change();
+                    }
+                } );
+            } );
         }
     }
 
     function disablePreviousVss($lastTemplate)
     {
-        var nth = $lastTemplate.data('nth');
+        var lastNth = $lastTemplate.data('nth');
 
         $('#filters').find('.templates').each(function(idx, template) {
             var $template = $(template);
-            if ($template.data('nth') < nth - 1) {
+            var nth = $template.data('nth');
+            if (nth < lastNth - 1) {
                 $template.find('.vss').prop('disabled', true);
+            }
+            if (nth < lastNth) {
+                $template.find('.vss').prop('checked', true);
             }
         } );
     }
@@ -203,7 +223,6 @@ $(function () {
     function addOrRemoveTemplate(event)
     {
         var $vs = $(event.target);
-        var $template = findElementTemplate($vs);
 
         if ($vs.is(':checked')) {
             addTemplate();
@@ -462,6 +481,49 @@ $(function () {
         $('<table>').append(trs).appendTo('#table');
     }
 
+    function createStateObject()
+    {
+        var stateObj = {t:[]};
+        var selects = ['elements', 'tiers', 'classes', 'heroes', 'stars', 'levels'];
+
+        $('#filters').find('.templates').each(function(idx, template) {
+            var $template = $(template);
+            var data = stateObj.t[idx] = {};
+
+            $.each(selects, function(idxx, select) {
+                var $select = $template.find('.' + select);
+                if (val = ($select.val())) {
+                    data[$select.data('url')] = val;
+                }
+            } );
+
+            stateObj.t.push(data);
+        } );
+
+        // For some reason, last one is added twice !?
+        stateObj.t.pop();
+
+        return stateObj;
+    }
+
+    function applyState()
+    {
+        var state = $.bbq.getState();
+
+        if (state && state.t) {
+            $.each(state.t, function(idx, data) {
+                addTemplate(data);
+            } );
+        } else {
+            addTemplate();
+        }
+    }
+
+    function pushState()
+    {
+        $.bbq.pushState(createStateObject());
+    }
+
     function setFooter()
     {
         var nbHeroes = honorbounder.data.heroes.length;
@@ -475,7 +537,8 @@ $(function () {
         $('footer').text(nbHeroes + ' heroes (' + nbHeroesByLevel + ' by level), ' + nbAbilities + ' abilities and still counting...')
     }
 
-    addTemplate();
+    $.param.fragment.noEscape(',/[]');
+    applyState();
 
     setFooter();
 
